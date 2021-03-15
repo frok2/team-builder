@@ -40,6 +40,13 @@ function App() {
   //Team List Dummy Data
   const history = useHistory();
  
+  function updateTeamList(item) {
+    // Item that comes in must look like entry on dummyData
+    console.log(item)
+    setTeamList([...teamList, item])
+    
+    
+  }
 
 
   return (
@@ -52,7 +59,7 @@ function App() {
           <Switch>
             
             <Route exact path='/'>
-              <Form />
+              <Form teamList={teamList} setTeamList={updateTeamList}/>
             </Route>
 
             <Route path='/teamlist'>

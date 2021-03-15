@@ -1,10 +1,31 @@
+import React, { useState } from 'react';
 
-function Form() {
+function Form(props) {
 
+    const {teamList, setTeamList} = props
+    
 
+    
+
+    const submitHandler = event => {
+        
+        const form = document.forms['memberForm']
+        event.preventDefault();
+        setTeamList({
+            id: teamList.length + 1,
+            fname: form['fname'].value,
+            lname: form['lname'].value,
+            email: form['email'].value,
+            position: form['position'].value
+        })
+        
+        
+    }
+
+    console.log('done', teamList)
   return (
     <div className="Form">
-              <form>
+        <form name="memberForm" onSubmit={submitHandler}>
             <label>First Name:
                 <input
                     type="text"
@@ -45,7 +66,7 @@ function Form() {
                 </select>
             </label>
             <br />
-            <input type="submit" />
+            <input type="submit" value="submit"/>
         </form>
     </div>
   );
